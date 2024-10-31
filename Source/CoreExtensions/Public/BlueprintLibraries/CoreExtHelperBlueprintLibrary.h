@@ -1,13 +1,13 @@
 #pragma once
 
 #include <CoreMinimal.h>
+#include <Curves/CurveVector.h>
 #include <Engine/Engine.h>
 #include <EngineUtils.h>
 #include <Kismet/BlueprintFunctionLibrary.h>
 #include <UObject/SoftObjectPtr.h>
 
 #include "CoreExtHelperBlueprintLibrary.generated.h"
-
 struct FWorldContext;
 class UWorld;
 class UObject;
@@ -49,6 +49,9 @@ public:
 
     UFUNCTION( BlueprintCallable )
     static bool ModifyAsset( UObject * object );
+
+    UFUNCTION( BlueprintPure )
+    static FVector GetRuntimeVectorCurveValue( UPARAM( ref ) FRuntimeVectorCurve & curve, float in_time );
 };
 
 template < typename _ACTOR_CLASS_ >
