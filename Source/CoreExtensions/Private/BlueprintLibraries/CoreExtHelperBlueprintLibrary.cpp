@@ -136,3 +136,8 @@ bool UCoreExtHelperBlueprintLibrary::ModifyAsset( UObject * object )
     return false;
 #endif
 }
+
+FVector UCoreExtHelperBlueprintLibrary::GetRuntimeVectorCurveValue( UPARAM( ref ) FRuntimeVectorCurve & curve, float in_time )
+{
+    return curve.GetValue( in_time );
+}
