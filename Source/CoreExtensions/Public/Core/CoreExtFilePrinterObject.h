@@ -28,14 +28,15 @@ public:
     void CloseFile();
 
     UFUNCTION( BlueprintCallable )
-    void AppendString( const FString & string_to_append ) const;
+    void AppendString( const FString & string_to_append );
 
     UFUNCTION( BlueprintCallable )
-    void AppendLine( const FString & string_to_append ) const;
+    void AppendLine( const FString & string_to_append );
 
 private:
     static FString GetNewFileName( const FString & original_name, const FString & path );
 
     bool bFileOpened;
     FString FilePath;
+    FStringBuilderBase TextToPrint;
 };
