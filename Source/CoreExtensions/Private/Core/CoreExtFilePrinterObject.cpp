@@ -69,19 +69,21 @@ bool UCoreExtFilePrinterObject::CreateFile( UCoreExtFilePrinterObject *& file_pr
 void UCoreExtFilePrinterObject::CloseFile()
 {
     bFileOpened = false;
+
+    FFileHelper::SaveStringToFile( TextToPrint, *FilePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_Append );
 }
 
-void UCoreExtFilePrinterObject::AppendString( const FString & string_to_append ) const
+void UCoreExtFilePrinterObject::AppendString( const FString & string_to_append )
 {
     if ( !bFileOpened )
     {
         return;
     }
 
-    FFileHelper::SaveStringToFile( string_to_append, *FilePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_Append );
+    TextToPrint << string_to_append;
 }
 
-void UCoreExtFilePrinterObject::AppendLine( const FString & string_to_append ) const
+void UCoreExtFilePrinterObject::AppendLine( const FString & string_to_append )
 {
     if ( !bFileOpened )
     {
@@ -89,7 +91,7 @@ void UCoreExtFilePrinterObject::AppendLine( const FString & string_to_append ) c
     }
 
     const auto result = "\n" + string_to_append;
-    FFileHelper::SaveStringToFile( result, *FilePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_Append );
+    TextToPrint << result;
 }
 
 FString UCoreExtFilePrinterObject::GetNewFileName( const FString & original_name, const FString & path )
