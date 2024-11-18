@@ -141,3 +141,8 @@ FVector UCoreExtHelperBlueprintLibrary::GetRuntimeVectorCurveValue( UPARAM( ref 
 {
     return curve.GetValue( in_time );
 }
+
+void UCoreExtHelperBlueprintLibrary::SetEditorOnly( AActor * actor, bool editor_only )
+{
+    actor->bIsEditorOnlyActor = editor_only;
+}
