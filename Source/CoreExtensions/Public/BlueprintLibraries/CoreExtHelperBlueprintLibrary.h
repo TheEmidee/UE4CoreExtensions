@@ -52,6 +52,9 @@ public:
 
     UFUNCTION( BlueprintPure )
     static FVector GetRuntimeVectorCurveValue( UPARAM( ref ) FRuntimeVectorCurve & curve, float in_time );
+
+    UFUNCTION( BlueprintCallable )
+    static void SetEditorOnly( AActor * actor, bool editor_only = true );
 };
 
 template < typename _ACTOR_CLASS_ >
