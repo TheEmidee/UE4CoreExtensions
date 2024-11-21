@@ -8,11 +8,34 @@ class COREEXTENSIONS_API UCoreExtTypeBlueprintLibrary final : public UBlueprintF
     GENERATED_BODY()
 public:
     UFUNCTION( BlueprintPure )
-    static int LowestIntValue();
+    static int MinIntValue();
+
     UFUNCTION( BlueprintPure )
     static int MaxIntValue();
+
     UFUNCTION( BlueprintPure )
-    static float LowestFloatValue();
+    static float MinFloatValue();
+
     UFUNCTION( BlueprintPure )
     static float MaxFloatValue();
 };
+
+FORCEINLINE int UCoreExtTypeBlueprintLibrary::MinIntValue()
+{
+    return TNumericLimits< int >().Min();
+}
+
+FORCEINLINE int UCoreExtTypeBlueprintLibrary::MaxIntValue()
+{
+    return TNumericLimits< int >().Max();
+}
+
+FORCEINLINE float UCoreExtTypeBlueprintLibrary::MinFloatValue()
+{
+    return TNumericLimits< float >().Lowest();
+}
+
+FORCEINLINE float UCoreExtTypeBlueprintLibrary::MaxFloatValue()
+{
+    return TNumericLimits< float >().Max();
+}
