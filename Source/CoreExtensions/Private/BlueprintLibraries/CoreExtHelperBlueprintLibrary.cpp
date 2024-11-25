@@ -147,10 +147,10 @@ void UCoreExtHelperBlueprintLibrary::SetEditorOnly( AActor * actor, bool editor_
 {
     actor->bIsEditorOnlyActor = editor_only;
 }
-void UCoreExtHelperBlueprintLibrary::SetPrimitiveComponentOwner( UPrimitiveComponent * component, AActor * actor )
+void UCoreExtHelperBlueprintLibrary::SetActorComponentOwner( UActorComponent * component, AActor * new_owner_actor )
 {
-    if ( component != nullptr || actor != nullptr )
+    if ( component != nullptr && new_owner_actor != nullptr )
     {
-        component->Rename( *component->GetName(), actor );
+        component->Rename( *component->GetName(), new_owner_actor );
     }
 }
