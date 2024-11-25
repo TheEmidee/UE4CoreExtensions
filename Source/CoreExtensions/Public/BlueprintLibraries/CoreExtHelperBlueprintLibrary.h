@@ -55,6 +55,9 @@ public:
 
     UFUNCTION( BlueprintCallable )
     static void SetEditorOnly( AActor * actor, bool editor_only = true );
+
+    UFUNCTION( BlueprintCallable, meta = ( ToolTip = "Change primitive component owner without changing attachment tree" ) )
+    static void SetPrimitiveComponentOwner( UPrimitiveComponent * component, AActor * actor );
 };
 
 template < typename _ACTOR_CLASS_ >
