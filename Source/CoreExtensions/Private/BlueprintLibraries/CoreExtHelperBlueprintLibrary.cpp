@@ -1,5 +1,6 @@
 #include "BlueprintLibraries/CoreExtHelperBlueprintLibrary.h"
 
+#include <Components/PrimitiveComponent.h>
 #include <Engine/World.h>
 #include <GameFramework/GameModeBase.h>
 #include <GameFramework/PlayerController.h>
@@ -145,4 +146,11 @@ FVector UCoreExtHelperBlueprintLibrary::GetRuntimeVectorCurveValue( UPARAM( ref 
 void UCoreExtHelperBlueprintLibrary::SetEditorOnly( AActor * actor, bool editor_only )
 {
     actor->bIsEditorOnlyActor = editor_only;
+}
+void UCoreExtHelperBlueprintLibrary::SetActorComponentOwner( UActorComponent * component, AActor * new_owner_actor )
+{
+    if ( component != nullptr && new_owner_actor != nullptr )
+    {
+        component->Rename( *component->GetName(), new_owner_actor );
+    }
 }
