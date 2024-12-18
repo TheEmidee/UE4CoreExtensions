@@ -151,7 +151,7 @@ void UCoreExtHelperBlueprintLibrary::SetActorComponentOwner( UActorComponent * c
 {
     if ( component != nullptr && new_owner_actor != nullptr )
     {
-        const auto new_name = MakeUniqueObjectName(new_owner_actor, component->GetClass(), *component->GetName());
+        const auto new_name = MakeUniqueObjectName( new_owner_actor, component->GetClass(), *component->GetName() );
         component->Rename( *new_name.ToString(), new_owner_actor );
     }
 }
