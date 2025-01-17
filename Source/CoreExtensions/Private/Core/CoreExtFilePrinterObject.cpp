@@ -36,9 +36,9 @@ bool UCoreExtFilePrinterObject::CreateFile( UCoreExtFilePrinterObject *& file_pr
 
     switch ( creation_policy )
     {
-        case Append:
+        case ECoreExtCreateFilePolicy::Append:
             break;
-        case Clear:
+        case ECoreExtCreateFilePolicy::Clear:
         {
             if ( file_exists )
             {
@@ -46,7 +46,7 @@ bool UCoreExtFilePrinterObject::CreateFile( UCoreExtFilePrinterObject *& file_pr
             }
         }
         break;
-        case CreateNew:
+        case ECoreExtCreateFilePolicy::CreateNew:
         {
             if ( file_exists )
             {

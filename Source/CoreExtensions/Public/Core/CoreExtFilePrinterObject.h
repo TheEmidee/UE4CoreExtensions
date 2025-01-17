@@ -6,7 +6,7 @@
 #include "CoreExtFilePrinterObject.generated.h"
 
 UENUM( BlueprintType )
-enum ECoreExtCreateFilePolicy
+enum class ECoreExtCreateFilePolicy : uint8
 {
     Append,
     Clear,
